@@ -2,8 +2,6 @@
   <img src="src\assets\img\transparentBanner.png" width="70%"/>
 </p>
 
-<br>
-
 ##
 
 <p align="center">
