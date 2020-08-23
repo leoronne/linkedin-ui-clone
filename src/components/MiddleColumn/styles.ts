@@ -15,7 +15,7 @@ export const Container = styled.div`
     > .line {
       background-color: var(--color-hashtag);
       height: 1px;
-      width: 80%;
+      width: 70%;
     }
     > span {
       font-size: 14px;

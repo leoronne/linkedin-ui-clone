@@ -2,6 +2,13 @@ import styled, { css } from 'styled-components';
 
 import { Comment, Like, Send, Share } from '../../../styles/Icons';
 
+import congrats from '~/assets/svg/congrats.svg';
+import idea from '~/assets/svg/idea.svg';
+import like from '~/assets/svg/like.svg';
+import love from '~/assets/svg/love.svg';
+import support from '~/assets/svg/support.svg';
+import think from '~/assets/svg/think.svg';
+
 export const Container = styled.div`
   margin-top: 8px;
 
@@ -22,32 +29,54 @@ export const Row = styled.div`
     h3 {
       font-size: 14px;
       color: var(--color-black);
+      cursor: pointer;
     }
     h4,
     time {
       font-size: 12px;
       font-weight: normal;
       color: var(--color-gray);
+      cursor: pointer;
     }
   }
   &.likes {
     padding: 8px 0;
     font-size: 12px;
     color: var(--color-gray);
-
+    cursor: pointer;
     .circle {
       width: 16px;
       height: 16px;
       border-radius: 50%;
 
-      &.blue {
-        background: #1385bd;
+      &.love {
+        background: url(${love}) no-repeat;
+        background-size: cover;
       }
-      &.green {
-        background: #6dae4f;
+
+      &.congrats {
+        background: url(${congrats}) no-repeat;
+        background-size: cover;
       }
-      &.red {
-        background: #df704c;
+
+      &.idea {
+        background: url(${idea}) no-repeat;
+        background-size: cover;
+      }
+
+      &.like {
+        background: url(${like}) no-repeat;
+        background-size: cover;
+      }
+
+      &.support {
+        background: url(${support}) no-repeat;
+        background-size: cover;
+      }
+
+      &.think {
+        background: url(${think}) no-repeat;
+        background-size: cover;
       }
 
       & + .circle {
@@ -56,6 +85,7 @@ export const Row = styled.div`
     }
     .number {
       margin-left: 8px;
+      cursor: pointer;
     }
   }
   &.actions {
@@ -109,10 +139,12 @@ export const Avatar = styled.img`
   height: 48px;
   border-radius: 50%;
   margin-right: 8px;
+  cursor: pointer;
 `;
 
 export const Column = styled.div`
   margin-left: 5px;
+  cursor: pointer;
 `;
 
 const iconCSS = css`
