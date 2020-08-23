@@ -31,7 +31,7 @@
 
 ## Project :star2:
 
-This repo contains an UI clone (partial) from LinkedIn application.
+This repo contains an UI clone (partial) from LinkedIn application, with responsive layout and the Shimmer Effect from Facebook.
 
 <br>
 
