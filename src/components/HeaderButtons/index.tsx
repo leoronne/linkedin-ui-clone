@@ -21,7 +21,7 @@ import {
 export const HomeButton: React.FC = () => {
   return (
     <Container id="home-button">
-      <button type="button" className="active" onClick={() => openPage('feed')} data-tip="Go to the feed">
+      <button type="button" className="active" onClick={() => window.location.reload()} data-tip="Go to the feed">
         <HomeIcon />
         <span>Home</span>
       </button>
