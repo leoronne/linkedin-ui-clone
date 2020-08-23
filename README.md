@@ -21,7 +21,7 @@
 <br>
 
 <p align="center">
-  <img src="src\assets\img\banner.png"/>
+  <img src="src\assets\img\linkedin.gif"/>
 </p>
 
 
