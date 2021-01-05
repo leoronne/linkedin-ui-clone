@@ -3,8 +3,11 @@ import styled from 'styled-components';
 import { FiChevronDown } from 'react-icons/fi';
 
 export const Container = styled.div`
+  padding: 15px;
+
   @media (min-width: 1180px) {
     width: 552px;
+    padding: 0px;
   }
 
   .seprator {
@@ -15,14 +18,17 @@ export const Container = styled.div`
     > .line {
       background-color: var(--color-hashtag);
       height: 1px;
-      width: 70%;
+      width: 85%;
     }
     > span {
+      padding: 0 5px;
       font-size: 14px;
       color: var(--color-hashtag);
+      min-width: 105px;
       cursor: pointer;
       > strong {
         color: var(--color-black);
+        margin-left: 5px;
       }
     }
   }

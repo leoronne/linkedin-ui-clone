@@ -23,13 +23,17 @@ export const Container = styled.div`
       align-items: center;
       justify-content: space-between;
       padding: 5px 10px;
+      transition: var(--transition);
       &:hover {
         background-color: var(--cool-gray-20);
+        transition: var(--transition);
       }
       > span {
         cursor: pointer;
+        transition: var(--transition);
         &:hover {
           text-decoration: underline;
+          transition: var(--transition);
         }
       }
     }
@@ -46,21 +50,25 @@ export const Container = styled.div`
       font-size: 12px;
       padding: 5px 10px;
       cursor: pointer;
+      transition: var(--transition);
       &:hover {
         background-color: var(--cool-gray-20);
         text-decoration: underline;
+        transition: var(--transition);
       }
     }
     .discover {
       margin-top: 10px;
-      border-top: 1px solid var(--color-icons);
+      border-top: 1px solid var(--color-separator);
       padding: 5px 10px;
       cursor: pointer;
       text-align: center;
       font-size: 16px;
       color: var(--color-gray);
+      transition: var(--transition);
       &:hover {
         text-decoration: underline;
+        transition: var(--transition);
       }
     }
   }

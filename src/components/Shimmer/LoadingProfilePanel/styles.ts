@@ -6,6 +6,8 @@ export const Container = styled.div`
     .bg-skeleton {
       width: 100%;
       height: 70px;
+      border-top-left-radius: var(--border-radius);
+      border-top-right-radius: var(--border-radius);
 
       filter: brightness(96%);
     }

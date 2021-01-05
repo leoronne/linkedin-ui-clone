@@ -1,13 +1,13 @@
 import styled, { css } from 'styled-components';
 
-import { Comment, Like, Send, Share } from '../../../styles/Icons';
+import { Comment, Like, PostOptions, Send, Share } from '../../../styles/Icons';
 
-import congrats from '~/assets/svg/congrats.svg';
-import idea from '~/assets/svg/idea.svg';
-import like from '~/assets/svg/like.svg';
-import love from '~/assets/svg/love.svg';
-import support from '~/assets/svg/support.svg';
-import think from '~/assets/svg/think.svg';
+import congrats from '../../../assets/svg/congrats.svg';
+import idea from '../../../assets/svg/idea.svg';
+import like from '../../../assets/svg/like.svg';
+import love from '../../../assets/svg/love.svg';
+import support from '../../../assets/svg/support.svg';
+import think from '../../../assets/svg/think.svg';
 
 export const Container = styled.div`
   margin-top: 8px;
@@ -20,6 +20,31 @@ export const Container = styled.div`
 export const Row = styled.div`
   display: flex;
   margin: 0 16px;
+  position: relative;
+
+  .post-options {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    margin-top: 10px;
+
+    cursor: pointer;
+    border-radius: 50%;
+
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+
+    &:hover {
+      background-color: #e0e0e0;
+      transition: var(--transition);
+    }
+  }
 
   &.heading {
     padding: 12px 0 8px;
@@ -106,6 +131,9 @@ export const Row = styled.div`
       display: flex;
       align-items: center;
       padding: 14px 8px;
+      margin: 5px;
+
+      border-radius: 5px;
 
       cursor: pointer;
       &:hover,
@@ -168,4 +196,10 @@ export const ShareIcon = styled(Share)`
 
 export const SendIcon = styled(Send)`
   ${iconCSS}
+`;
+
+export const PostOptionsIcon = styled(PostOptions)`
+  width: 24px;
+  height: 24px;
+  fill: var(--color-hashtag);
 `;

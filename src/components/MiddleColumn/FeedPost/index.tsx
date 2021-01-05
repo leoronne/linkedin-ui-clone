@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import { Tooltip } from '@material-ui/core';
 
 import kFormatter from '../../../utils/kFormatter';
 
 import Panel from '../../Panel';
 
-import { Container, Row, PostImage, Separator, Avatar, Column, LikeIcon, CommentIcon, ShareIcon, SendIcon } from './styles';
+import { useStyles } from '../../../styles/MaterialUI';
+import { Container, Row, PostImage, Separator, Avatar, Column, LikeIcon, CommentIcon, ShareIcon, SendIcon, PostOptionsIcon } from './styles';
 
 interface PostProps {
   user: string;
@@ -13,11 +15,13 @@ interface PostProps {
 }
 
 const FeedPost: React.FC<PostProps> = ({ user, title, avatar }) => {
-  const reactions = ['congrats', 'idea', 'like', 'love', 'support', 'think'];
-  const slicedReactions = reactions.sort(() => 0.5 - Math.random()).slice(0, 3);
-  const comments = kFormatter(Math.floor(Math.random() * (10000 - 1)) + 1);
-  const likes = kFormatter(Math.floor(Math.random() * (10000 - 1)) + 1);
-  const time = Math.floor(Math.random() * (24 - 1)) + 1;
+  const classes = useStyles();
+
+  const reactions = useMemo(() => ['congrats', 'idea', 'like', 'love', 'support', 'think'], []);
+  const slicedReactions = useMemo(() => reactions.sort(() => 0.5 - Math.random()).slice(0, 3), []);
+  const comments = useMemo(() => kFormatter(Math.floor(Math.random() * (10000 - 1)) + 1), []);
+  const likes = useMemo(() => kFormatter(Math.floor(Math.random() * (10000 - 1)) + 1), []);
+  const time = useMemo(() => Math.floor(Math.random() * (24 - 1)) + 1, []);
 
   return (
     <Panel>
@@ -27,8 +31,13 @@ const FeedPost: React.FC<PostProps> = ({ user, title, avatar }) => {
           <Column>
             <h3>{user}</h3>
             <h4>{title}</h4>
-            <time data-tip={`${user} posted ${time}h ago`}>{time}h</time>
+            <Tooltip title={`${user} posted ${time}h ago`} placement="bottom" arrow classes={{ tooltip: classes.tooltip }}>
+              <time>{`${time}h`}</time>
+            </Tooltip>
           </Column>
+          <div className="post-options">
+            <PostOptionsIcon />
+          </div>
         </Row>
 
         <PostImage src="https://blog.rocketseat.com.br/content/images/2019/05/Painel.png" alt="Rocketseat Blog" />
@@ -37,11 +46,13 @@ const FeedPost: React.FC<PostProps> = ({ user, title, avatar }) => {
           {slicedReactions.map(reaction => (
             <span className={`circle ${reaction}`} key={reaction} />
           ))}
-          <span className="number" data-tip={`${likes} users reacted to this post`}>
-            {likes}
-          </span>
+          <Tooltip title={`${likes} users reacted to this post`} placement="bottom" arrow classes={{ tooltip: classes.tooltip }}>
+            <span className="number">{likes}</span>
+          </Tooltip>
           <span className="number">•</span>
-          <span className="number" data-tip={`${comments} users commented on this post`}>{`${comments} Comments`}</span>
+          <Tooltip title={`${comments} users commented on this post`} placement="bottom" arrow classes={{ tooltip: classes.tooltip }}>
+            <span className="number">{`${comments} Comments`}</span>
+          </Tooltip>
         </Row>
 
         <Row>
@@ -49,22 +60,30 @@ const FeedPost: React.FC<PostProps> = ({ user, title, avatar }) => {
         </Row>
 
         <Row className="actions">
-          <button type="button" data-tip="React to the post">
-            <LikeIcon />
-            <span>Like</span>
-          </button>
-          <button type="button" data-tip="Comment on the post">
-            <CommentIcon />
-            <span>Comment</span>
-          </button>
-          <button type="button" data-tip="Share post">
-            <ShareIcon />
-            <span>Share</span>
-          </button>
-          <button type="button" data-tip="Send post">
-            <SendIcon />
-            <span>Send</span>
-          </button>
+          <Tooltip title="React to the post" placement="bottom" arrow classes={{ tooltip: classes.tooltip }}>
+            <button type="button">
+              <LikeIcon />
+              <span>Like</span>
+            </button>
+          </Tooltip>
+          <Tooltip title="Comment on the post" placement="bottom" arrow classes={{ tooltip: classes.tooltip }}>
+            <button type="button">
+              <CommentIcon />
+              <span>Comment</span>
+            </button>
+          </Tooltip>
+          <Tooltip title="Share post" placement="bottom" arrow classes={{ tooltip: classes.tooltip }}>
+            <button type="button">
+              <ShareIcon />
+              <span>Share</span>
+            </button>
+          </Tooltip>
+          <Tooltip title="Send post" placement="bottom" arrow classes={{ tooltip: classes.tooltip }}>
+            <button type="button">
+              <SendIcon />
+              <span>Send</span>
+            </button>
+          </Tooltip>
         </Row>
       </Container>
     </Panel>

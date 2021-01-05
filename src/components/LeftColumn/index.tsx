@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactTooltip from 'react-tooltip';
 
 import LoadingProfilePanel from '../Shimmer/LoadingProfilePanel';
 import ProfilePanel from './ProfilePanel';
@@ -16,7 +15,6 @@ const LeftColumn: React.FC<LoadingProps> = ({ isLoading }) => {
         <>
           <ProfilePanel />
           <HashtagPanel />
-          <ReactTooltip place="bottom" type="dark" effect="solid" />
         </>
       )}
     </Container>

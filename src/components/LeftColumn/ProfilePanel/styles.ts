@@ -1,6 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
 
+import background from '../../../assets/img/background.png';
+
 import { Save } from '../../../styles/Icons';
 
 export const Container = styled.div`
@@ -15,7 +17,7 @@ export const Container = styled.div`
   .profile-cover {
     width: 100%;
     height: 54px;
-    background: url('https://media-exp1.licdn.com/dms/image/C4E16AQEV-YPe0e96bw/profile-displaybackgroundimage-shrink_350_1400/0?e=1603324800&v=beta&t=R-IhZ-rrZhrIDyRZcpIMZIhYR4xMZaotzcH8WaR-fNA');
+    background: url(${background});
     background-repeat: no-repeat;
     background-size: cover;
   }
@@ -61,9 +63,11 @@ export const Container = styled.div`
     color: var(--color-gray);
     font-weight: 600;
     cursor: pointer;
+    transition: var(--transition);
 
     &:hover {
       text-decoration: underline;
+      transition: var(--transition);
     }
 
     > span {
@@ -79,9 +83,11 @@ export const Container = styled.div`
     margin: 3px 12px;
     font-weight: 600;
     cursor: pointer;
+    transition: var(--transition);
 
     &:hover {
       text-decoration: underline;
+      transition: var(--transition);
     }
 
     .key {

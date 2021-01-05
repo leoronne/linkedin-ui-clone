@@ -4,19 +4,27 @@ import { Article, Document, Photo, Video, Write } from '../../../styles/Icons';
 
 export const Container = styled.div`
   color: var(--color-gray);
+  padding: var(--post-container-margin);
 
   .write {
     display: flex;
     align-items: center;
-    padding: 18px 24px;
+    padding: 14px 24px;
     cursor: pointer;
+
+    margin: var(--post-margin);
+
+    border: var(--post-border);
+    border-radius: var(--post-border-radius);
+    transition: var(--transition);
 
     &:hover {
       background: rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
     }
 
     > span {
-      margin-left: 8px;
+      margin-left: 16px;
       font-weight: 600;
     }
   }
@@ -30,7 +38,7 @@ export const Container = styled.div`
       justify-content: space-between;
       height: 100%;
       padding: 0 24px;
-      border-top: 1px solid var(--color-separator);
+      border-top: var(--post-separator);
 
       button {
         display: flex;
@@ -42,10 +50,15 @@ export const Container = styled.div`
         color: var(--color-gray);
         font-weight: 600;
 
+        margin: 5px 0;
+        border-radius: 5px;
+        transition: var(--transition);
+
         cursor: pointer;
         &:hover,
         &:focus {
           background: rgba(0, 0, 0, 0.05);
+          transition: var(--transition);
         }
       }
     }
@@ -71,7 +84,6 @@ export const CameraIcon = styled(Photo)`
 
 export const VideoCameraIcon = styled(Video)`
   ${iconCSS}
-  fill: #9896f2;
 `;
 
 export const DocumentIcon = styled(Document)`

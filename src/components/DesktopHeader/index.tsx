@@ -9,7 +9,7 @@ const Header: React.FC = () => {
     <Container>
       <Wrapper>
         <div className="left">
-          <LinkedInIcon onClick={() => window.open('https://github.com/leoronne/linkedin-ui-clone', 'blank')} data-tip="Go to the GitHub repository" />
+          <LinkedInIcon onClick={() => window.open('https://github.com/leoronne/linkedin-ui-clone', 'blank')} />
           <SearchButton />
         </div>
 

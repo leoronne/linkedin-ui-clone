@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import ReactTooltip from 'react-tooltip';
 
-import DesktopHeader from '../components/DesktopHeader';
-import AdBanner from '../components/AdBanner';
-import LeftColumn from '../components/LeftColumn';
-import MiddleColumn from '../components/MiddleColumn';
-import RightColumn from '../components/RightColumn';
+import { useTheme } from '../hooks';
 
-import { Container } from './styles';
+import { DesktopHeader, AdBanner, LeftColumn, MiddleColumn, RightColumn } from '../components';
+
+import { Container, VersionIcon } from './styles';
 
 const Layout: React.FC = () => {
+  const { changeTheme, themeName } = useTheme();
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 1500);
   }, []);
 
   return (
@@ -29,7 +27,13 @@ const Layout: React.FC = () => {
         <MiddleColumn isLoading={isLoading} />
         <RightColumn isLoading={isLoading} />
       </main>
-      <ReactTooltip place="bottom" type="dark" effect="solid" />
+
+      <div className="theme-container">
+        <button type="button" onClick={changeTheme}>
+          <VersionIcon />
+          <span>{`Change to the ${themeName === 'new' ? 'old' : 'new'} version`}</span>
+        </button>
+      </div>
     </Container>
   );
 };

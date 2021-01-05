@@ -1,33 +1,40 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
+import { Tooltip } from '@material-ui/core';
 
 import Panel from '../../Panel';
 
 import openPage from '../../../utils/openPage';
 
+import { useStyles } from '../../../styles/MaterialUI';
 import { Container, HashtagIcon, UpIcon, DownIcon, GroupsIcon } from './styles';
 
 const tags = ['devops', 'productmanagement', 'react', 'frontend', 'typescript', 'ui-clone', 'rocketseat'];
-const groups = ['ReactJS', 'Visor', 'Visor Brasil', 'Product School'];
+const groups = ['ReactJS', 'Memed', 'Visor Brasil', 'Product School', 'Rocketseat'];
 
 const HashtagPanel: React.FC = () => {
+  const classes = useStyles();
+
   const [showTags, setShowTags] = useState(true);
   const [showGroups, setShowGroups] = useState(true);
   return (
     <Container>
       <Panel>
         <div className="title">
-          <span onClick={() => openPage('/groups/')} data-tip="Search groups">
-            Groups
-          </span>
-          <div className="hide-button" onClick={() => setShowGroups(!showGroups)} data-tip={`${showGroups ? 'Hide' : 'Show'} groups`}>
-            {showGroups ? <DownIcon /> : <UpIcon />}
-          </div>
+          <Tooltip title="Search groups" placement="bottom" arrow classes={{ tooltip: classes.tooltip }}>
+            <span onClick={() => openPage('/groups/')}>Groups</span>
+          </Tooltip>
+          <Tooltip title={`${showGroups ? 'Hide' : 'Show'} groups`} placement="right" arrow classes={{ tooltip: classes.tooltip }}>
+            <div className="hide-button" onClick={() => setShowGroups(!showGroups)}>
+              {showGroups ? <DownIcon /> : <UpIcon />}
+            </div>
+          </Tooltip>
         </div>
 
         <div className={`tags-list${showGroups ? '' : ' hidden'}`}>
-          {groups.map(item => (
-            <span className="tag">
+          {groups.map((item, index) => (
+            <span className="tag" key={`${item}-${index}`}>
               <GroupsIcon />
               {item}
             </span>
@@ -35,27 +42,31 @@ const HashtagPanel: React.FC = () => {
         </div>
 
         <div className="title">
-          <span onClick={() => openPage('/feed/following/?filterType=channel&focused=true')} data-tip="Search followed hashtags">
-            Followed Hashtags
-          </span>
-          <div className="hide-button" onClick={() => setShowTags(!showTags)} data-tip={`${showTags ? 'Hide' : 'Show'} followed hashtags`}>
-            {showTags ? <DownIcon /> : <UpIcon />}
-          </div>
+          <Tooltip title="Search followed hashtags" placement="right" arrow classes={{ tooltip: classes.tooltip }}>
+            <span onClick={() => openPage('/feed/following/?filterType=channel&focused=true')}>Followed Hashtags</span>
+          </Tooltip>
+          <Tooltip title={`${showTags ? 'Hide' : 'Show'} followed hashtags`} placement="right" arrow classes={{ tooltip: classes.tooltip }}>
+            <div className="hide-button" onClick={() => setShowTags(!showTags)}>
+              {showTags ? <DownIcon /> : <UpIcon />}
+            </div>
+          </Tooltip>
         </div>
 
         <div className={`tags-list${showTags ? '' : ' hidden'}`}>
-          {tags.map(item => (
-            <span className="tag" onClick={() => openPage(`feed/hashtag/${item}/`)} data-tip={`Search #${item} hashtag`}>
-              <HashtagIcon />
-              {item}
-            </span>
+          {tags.map((item, index) => (
+            <Tooltip title={`Search #${item} hashtag`} placement="right" arrow classes={{ tooltip: classes.tooltip }} key={`${item}-${index}`}>
+              <span className="tag" onClick={() => openPage(`feed/hashtag/${item}/`)}>
+                <HashtagIcon />
+                {item}
+              </span>
+            </Tooltip>
           ))}
         </div>
 
         <div className="discover">
-          <span onClick={() => openPage('mynetwork/discover-hub/')} data-tip="Manage your network">
-            Discover More
-          </span>
+          <Tooltip title="Manage your network" placement="bottom" arrow classes={{ tooltip: classes.tooltip }}>
+            <span onClick={() => openPage('mynetwork/discover-hub/')}>Discover More</span>
+          </Tooltip>
         </div>
       </Panel>
     </Container>

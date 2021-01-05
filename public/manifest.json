@@ -1,10 +1,18 @@
 {
   "short_name": "linkedin-ui-clone",
   "name": "LinkedIn UI Clone",
+  "author": "Leonardo Ronne",
+  "description": "This application contains an UI Clone (partial) from LinkedIn website.",
+  "developer": {
+    "name": "Leonardo Ronne",
+    "url": "https://github.com/leoronne"
+  },
+  "homepage_url": "https://linkedin.ui-clone.ronne.dev",
+
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "32x32",
+      "sizes": "256x256",
       "type": "image/x-icon"
     },
     {
@@ -13,13 +21,23 @@
       "sizes": "192x192"
     },
     {
+      "src": "logo256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
       "src": "logo512.png",
       "type": "image/png",
       "sizes": "512x512"
+    },
+    {
+      "src": "logo1024.png",
+      "type": "image/png",
+      "sizes": "1024x1024"
     }
   ],
   "start_url": "/",
   "display": "standalone",
   "theme_color": "#0077b5",
-  "background_color": "#fff"
+  "background_color": "#0077b5"
 }

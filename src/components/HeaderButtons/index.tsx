@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 import openPage from '../../utils/openPage';
 
@@ -21,8 +21,11 @@ import {
 export const HomeButton: React.FC = () => {
   return (
     <Container id="home-button">
-      <button type="button" className="active" onClick={() => window.location.reload()} data-tip="Go to the feed">
+      <button type="button" className="active" onClick={() => window.location.reload()}>
         <HomeIcon />
+        <div className="notification-badge no-count">
+          <div className="no-count-circle" />
+        </div>
         <span>Home</span>
       </button>
     </Container>
@@ -32,7 +35,7 @@ export const HomeButton: React.FC = () => {
 export const NetworkButton: React.FC = () => {
   return (
     <Container id="network-button">
-      <button type="button" onClick={() => openPage('mynetwork')} data-tip="Go to your network">
+      <button type="button" onClick={() => openPage('mynetwork')}>
         <NetWorkIcon />
         <span>My Network</span>
       </button>
@@ -43,7 +46,7 @@ export const NetworkButton: React.FC = () => {
 export const JobsButton: React.FC = () => {
   return (
     <Container id="jobs-button">
-      <button type="button" onClick={() => openPage('jobs')} data-tip="Search open jobs">
+      <button type="button" onClick={() => openPage('jobs')}>
         <JobsIcon />
         <span>Jobs</span>
       </button>
@@ -52,10 +55,14 @@ export const JobsButton: React.FC = () => {
 };
 
 export const MessagingButton: React.FC = () => {
+  const notifications = useMemo(() => Math.floor(Math.random() * (100 - 1)) + 1, []);
   return (
     <Container id="messages-button">
-      <button type="button" onClick={() => openPage('messaging')} data-tip="Go to your messages">
+      <button type="button" onClick={() => openPage('messaging')}>
         <MessagesIcon />
+        <div className="notification-badge">
+          <p>{notifications}</p>
+        </div>
         <span>Messaging</span>
       </button>
     </Container>
@@ -63,10 +70,14 @@ export const MessagingButton: React.FC = () => {
 };
 
 export const NotificationsButton: React.FC = () => {
+  const notifications = useMemo(() => Math.floor(Math.random() * (100 - 1)) + 1, []);
   return (
     <Container id="notifications-button">
-      <button type="button" onClick={() => openPage('notifications')} data-tip="Go to your notifications">
+      <button type="button" onClick={() => openPage('notifications')}>
         <NotificationsIcon />
+        <div className="notification-badge">
+          <p>{notifications}</p>
+        </div>
         <span>Notifications</span>
       </button>
     </Container>
@@ -76,7 +87,7 @@ export const NotificationsButton: React.FC = () => {
 export const ProfileButton: React.FC = () => {
   return (
     <Container>
-      <button type="button" onClick={() => openPage('in/')} data-tip="Go to your profile">
+      <button type="button" onClick={() => openPage('in/')}>
         <ProfileCircle src="https://github.com/leoronne.png" />
         <span>
           Me
@@ -90,7 +101,7 @@ export const ProfileButton: React.FC = () => {
 export const WorkButton: React.FC = () => {
   return (
     <Container id="work-button">
-      <button type="button" onClick={() => openPage('profinder')} data-tip="Search more LinkedIn features">
+      <button type="button" onClick={() => openPage('profinder')}>
         <WorkIcon />
         <span>
           Work
@@ -104,7 +115,7 @@ export const WorkButton: React.FC = () => {
 export const PostJobButton: React.FC = () => {
   return (
     <Container id="postjob-button">
-      <button type="button" onClick={() => openPage('talent/post-a-job')} data-tip="Post a job on LinkedIn">
+      <button type="button" onClick={() => openPage('talent/post-a-job')}>
         <PostJobIcon />
         <span>Post a job</span>
       </button>
@@ -121,13 +132,12 @@ export const SearchButton: React.FC = () => {
         if (search) openPage(`search/results/all/?keywords=${encodeURI(search)}`);
       }}
     >
-      <SearchInput placeholder="Search" onChange={e => setSearch(e.target.value.trim())} data-tip="Search something on LinkedIn" />
       <SearchIcon
-        data-tip={`Search ${search} on LinkedIn`}
         onClick={() => {
           if (search) openPage(`search/results/all/?keywords=${encodeURI(search)}`);
         }}
       />
+      <SearchInput placeholder="Search" onChange={e => setSearch(e.target.value.trim())} />
     </SearchForm>
   );
 };
