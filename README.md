@@ -34,9 +34,9 @@
 
 ## Project :star2:
 
-This repo contains an UI clone (partial) from LinkedIn application, both old and new versions, with responsive layout and replicating the Shimmer Effect.
+This project was part of an UI Clone challenge, the idea was to replicate (partially) the LinkedIn's feed page using ReactJS, MUI and styled-components.
 
-<br>
+The intent of this project was to work with the the characteristic shrimmer effect from LinkedIn, it also has the old/new version of it's UI.
 
 Deployed [here](https://linkedin.ui-clone.ronne.dev).
 
